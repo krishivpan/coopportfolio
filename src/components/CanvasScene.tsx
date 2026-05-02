@@ -55,7 +55,7 @@ export default function CanvasScene() {
 
         ctx.clearRect(0, 0, width, height);
         ctx.drawImage(bg, 0, 0, width, height);
-        ctx.drawImage(character, 0, 0, width, height);
+        ctx.drawImage(character, width - 460, height - 350);
 
         animationFrameId = requestAnimationFrame(animate);
       }
