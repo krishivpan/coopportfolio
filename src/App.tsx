@@ -1,9 +1,11 @@
 import Navbar from "./components/Navbar";
+import CanvasScene from "./components/CanvasScene";
 
 
-function App() {
+export default function App() {
   return (
     <>
+      <CanvasScene />
       <Navbar />
     </>
   );
