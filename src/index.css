@@ -16,6 +16,7 @@ body,
 body {
   font-family: system-ui, sans-serif;
   background-color: #FF6347;
+  background-repeat: no-repeat;
 }
 
 canvas {
@@ -63,3 +64,43 @@ canvas {
   display: inline-block;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  position: fixed;
+  left: 20rem;
+  top: 3rem;
+  width: calc(100% - 15rem);
+  z-index: 10;
+}
+
+.introduction > h1 {
+  margin-bottom: 8px;
+}
+
+.about-me ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-me li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+  line-height: 1.6;
+}
+
+.about-me li::before {
+  content: "";
+  display: inline-block;
+  width: 1.15rem;
+  height: 1.15rem;
+  background-image: url("/src/images/star.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
