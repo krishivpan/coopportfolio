@@ -12,7 +12,6 @@ export default function CanvasScene() {
     if (!context) return;
 
     const ctx = context;
-    const bg = new Image();
     const character = new Image();
 
     const canvasSize = {
@@ -29,19 +28,11 @@ export default function CanvasScene() {
 
     resizeCanvas();
 
-    bg.src = "/src/images/background.png";
     character.src = "/src/images/character.png";
 
-    let imagesLoaded = 0;
     let animationFrameId: number | null = null;
 
-    const onLoad = () => {
-      imagesLoaded++;
-      if (imagesLoaded === 2) start();
-    };
-
-    bg.onload = onLoad;
-    character.onload = onLoad;
+    character.onload = start;
 
     const handleResize = () => {
       resizeCanvas();
@@ -54,7 +45,6 @@ export default function CanvasScene() {
         const { width, height } = canvasSize;
 
         ctx.clearRect(0, 0, width, height);
-        ctx.drawImage(bg, 0, 0, width, height);
         ctx.drawImage(character, width - 460, height - 350);
 
         animationFrameId = requestAnimationFrame(animate);
