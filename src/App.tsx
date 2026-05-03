@@ -1,7 +1,7 @@
 import HomePage from "./components/HomePage";
 import CanvasScene from "./components/CanvasScene";
-import ClickSpark from "./components/ClickSpark";
-import FadingPen from "./components/FadingPen";
+import ClickSpark from "./effects/ClickSpark";
+import FadingPen from "./effects/FadingPen";
 
 export default function App() {
   return (

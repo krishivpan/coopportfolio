@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import Highlighter from "../effects/Highlighter";
 
 export default function HomePage() {
     return (
@@ -14,7 +15,7 @@ export default function HomePage() {
             </section>
             <section className="about-me">
                 <ul>
-                    <li>working as a Software Research Assistant in Summer 2026</li>
+                    <li>working as a <Highlighter color="rgba(31, 81, 255, 0.5)">Software Research Assistant</Highlighter> in Summer 2026</li>
                     <li>recipient of the $120,000 Schulich Leader Scholarship</li>
                     <li>raised ~$1000 for cancer research</li>
                     <li>use JS/TS, Python, C/C++, Java, Swift</li>
