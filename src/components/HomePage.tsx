@@ -6,7 +6,7 @@ export default function HomePage() {
         <Navbar />
         <main className="main-content">
             <section className="introduction">
-                <h1>Krishiv Panchal</h1>
+                <img className="name" src="/src/images/name.png" alt="krishiv handwritten"/>
                 <p>
                     Computer Engineering @ YorkU
                     <br/>Toronto, Ontario, Canada

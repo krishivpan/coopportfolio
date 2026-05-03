@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
 html,
@@ -72,11 +75,16 @@ canvas {
   left: 20rem;
   top: 3rem;
   width: calc(100% - 15rem);
-  z-index: 10;
+  -webkit-user-select: none;
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
 }
 
-.introduction > h1 {
-  margin-bottom: 8px;
+.introduction > img {
+  width: 450px;
+  margin-left: -30px;
+  
 }
 
 .about-me ul {
@@ -91,6 +99,7 @@ canvas {
   gap: 0.75rem;
   margin: 1.25rem 0;
   line-height: 1.6;
+  
 }
 
 .about-me li::before {
@@ -104,3 +113,4 @@ canvas {
   background-repeat: no-repeat;
   flex-shrink: 0;
 }
+
