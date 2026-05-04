@@ -1,12 +1,12 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const songs = [
     {
-      src: "/audio/YUKON.mp3",   
-      cover: "/album-covers/SWAG.png", 
+      src: "/audio/YUKON.mp3",
+      cover: "/album-covers/SWAG.png",
       title: "YUKON",
     },
   ];
@@ -14,60 +14,45 @@ export default function MusicPlayer() {
   const [index, setIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
-const playPause = () => {
+  // Runs after re-render so the audio element's src is already updated
+  // before play() is called — fixes the race condition in next/prev.
+  useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-
-    if (audio.paused) {
-        audio.play()
-        .then(() => setIsPlaying(true))
-        .catch(err => console.log("Play failed:", err));
+    if (isPlaying) {
+      audio.play().catch(err => console.log("Play failed:", err));
     } else {
-        audio.pause();
-        setIsPlaying(false);
+      audio.pause();
     }
-};
+  }, [index, isPlaying]);
+
+  const playPause = () => {
+    setIsPlaying(prev => !prev);
+  };
 
   const next = () => {
-    const newIndex = (index + 1) % songs.length;
-    setIndex(newIndex);
-
-    setTimeout(() => {
-      audioRef.current?.play();
-    }, 0);
-
+    setIndex(i => (i + 1) % songs.length);
     setIsPlaying(true);
   };
 
   const prev = () => {
-    const newIndex = (index - 1 + songs.length) % songs.length;
-    setIndex(newIndex);
-
-    setTimeout(() => {
-      audioRef.current?.play();
-    }, 0);
-
+    setIndex(i => (i - 1 + songs.length) % songs.length);
     setIsPlaying(true);
   };
 
   return (
     <div className="music-player">
       <div className="ipod-img">
-        {/* 🎵 Album cover (behind) */}
         <img
           src={songs[index].cover}
           className="album-cover"
           alt="album cover"
         />
-
-        {/* 🎧 iPod frame (on top) */}
         <img
           src="src/images/ipod.png"
           className="ipod-frame"
           alt="iPod"
         />
-
-        {/* 🫥 Invisible buttons */}
         <button className="btn play" onClick={playPause} />
         <button className="btn next" onClick={next} />
         <button className="btn prev" onClick={prev} />
@@ -76,8 +61,12 @@ const playPause = () => {
       <audio
         ref={audioRef}
         src={songs[index].src}
-        onEnded={next}
-      />
+        onLoadedMetadata={() => {
+            if (audioRef.current) {
+            audioRef.current.volume = 0.5;
+            }
+        }}
+        />
     </div>
   );
 }
