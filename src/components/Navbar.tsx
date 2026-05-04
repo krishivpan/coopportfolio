@@ -1,3 +1,5 @@
+import MusicPlayer from "./MusicPlayer";
+
 export default function Navbar() {
     return (
         <nav className="navbar">
@@ -7,8 +9,9 @@ export default function Navbar() {
                 <li><a href="#badminton">badminton</a></li>
                 <li><a href="#strings">strings</a></li>
                 <li><a href="#books">books</a></li>
-                
             </ul>
+            
+            <MusicPlayer/>
         </nav>
     )
 }
