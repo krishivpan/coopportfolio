@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import HomeContent from "./components/HomePage";
 import ProjectsContent from "./components/ProjectsPage";
 import ClickSpark from "./effects/ClickSpark";
+import FadingPen from "./effects/FadingPen";
 
 export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,7 +23,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ClickSpark sparkColor="#fff" sparkCount={8} sparkRadius={20} duration={400}>
-
+        <FadingPen />
         {/* ── Always-mounted backgrounds ── */}
         <div style={fadeStyle(!isPlaying)}>
           <CanvasScene />
