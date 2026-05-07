@@ -9,6 +9,12 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Violina",
+    image: "/src/images/violina-img.png",
+    video: "/src/videos/violina-demo.mp4",
+    link: "https://github.com/hans-hc/Violina",
+  },
+  {
     title: "Air Mouse",
     image: "/src/images/projects/project1.png",
     video: "/src/videos/Air-Mouse-Demo.mp4",
@@ -23,12 +29,6 @@ const projects: Project[] = [
     title: "Aim Corner",
     image: "/src/images/projects/project3.png",
     link: "https://github.com/krishivpan/AimCorner",
-  },
-  {
-    title: "Violina",
-    image: "/src/images/violina-img.png",
-    video: "/src/videos/violina-demo.mp4",
-    link: "https://github.com/hans-hc/Violina",
   },
 ];
 
