@@ -1,38 +1,49 @@
 interface Project {
   title: string;
-  description: string;
-  tags: string[];
+  image: string;   // path to project screenshot or gif
   link?: string;
 }
 
 const projects: Project[] = [
   {
-    title: "ProjectName",
-    description: "",
-    tags: ["TypeScript", "React"],
+    title: "Project One",
+    image: "/src/images/projects/project1.png",
     link: "https://github.com",
   },
+  {
+    title: "Project Two",
+    image: "/src/images/projects/project2.gif",
+    link: "https://github.com",
+  },
+  {
+    title: "Project Three",
+    image: "/src/images/projects/project3.png",
+    link: "https://github.com",
+  },
+  // Add more projects here
 ];
 
-export default function ProjectsPage() {
+export default function ProjectsContent() {
   return (
     <main className="main-content">
       <section className="projects-grid">
         {projects.map((project) => (
-          <div key={project.title} className="project-card">
-            <h2>{project.title}</h2>
-            <p>{project.description}</p>
-            <div className="project-tags">
-              {project.tags.map(tag => (
-                <span key={tag} className="tag">{tag}</span>
-              ))}
+          <a
+            key={project.title}
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="sticky-note"
+          >
+            <div className="sticky-note-inner">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="sticky-project-img"
+              />
+              <p className="sticky-title">{project.title}</p>
             </div>
-            {project.link && (
-              <a href={project.link} target="_blank" rel="noreferrer" className="project-link">
-                view →
-              </a>
-            )}
-          </div>
+          </a>
         ))}
       </section>
     </main>
