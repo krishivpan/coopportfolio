@@ -210,18 +210,14 @@ canvas {
  
 .sticky-note {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   background-image: url("/src/images/sticky-note.png");
   background-size: cover;
   background-repeat: no-repeat;
   text-decoration: none;
- 
-  /* Pop-up hover: scale + lift shadow */
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
               filter 0.25s ease;
- 
-  /* Slight random tilt per card — override per nth-child below */
   transform: rotate(-2deg);
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.35));
 }
@@ -232,7 +228,6 @@ canvas {
   z-index: 10;
 }
  
-/* Alternate tilts so the board feels natural */
 .sticky-note:nth-child(2n)   { transform: rotate(1.5deg); }
 .sticky-note:nth-child(3n)   { transform: rotate(-1deg); }
 .sticky-note:nth-child(4n)   { transform: rotate(2.5deg); }
@@ -243,7 +238,6 @@ canvas {
   transform: rotate(0deg) scale(1.12) translateY(-8px);
 }
  
-/* Inner padding keeps content away from the torn edges */
 .sticky-note-inner {
   position: absolute;
   inset: 0;
@@ -251,23 +245,59 @@ canvas {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px 20px 20px 24px; /* extra left/top to clear shadow edge */
+  padding: 24px 20px 20px 24px;
   gap: 10px;
+  transform: rotate(-2deg);
 }
  
-/* Project screenshot / gif */
-.sticky-project-img {
-  width: 100%;
+/* Wrapper so image and video occupy the same space */
+.sticky-media {
+  position: relative;
+  width: 90%;
+  left: 12px;
   aspect-ratio: 16 / 9;
+  border-radius: 3px;
+  overflow: hidden;
+}
+ 
+.sticky-project-img,
+.sticky-project-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 3px;
+  transition: opacity 0.3s ease;
 }
  
-/* Project title */
+/* Image sits on top by default */
+.sticky-project-img {
+  opacity: 1;
+  z-index: 1;
+}
+ 
+/* When a video exists, fade the image out on hover */
+.sticky-note:hover .sticky-project-img.has-video {
+  opacity: 0;
+}
+ 
+/* Video starts invisible, fades in on hover */
+.sticky-project-video {
+  opacity: 0;
+  z-index: 2;
+}
+ 
+.sticky-note:hover .sticky-project-video {
+  opacity: 1;
+}
+ 
 .sticky-title {
   font-size: 0.8rem;
   font-weight: 600;
   color: #3a2e00;
   text-align: center;
   line-height: 1.3;
+  position: relative;
+  z-index: 3;
 }
