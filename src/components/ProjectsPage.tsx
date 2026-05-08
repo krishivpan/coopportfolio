@@ -16,7 +16,7 @@ const projects: Project[] = [
   },
   {
     title: "Air Mouse",
-    image: "/src/images/projects/project1.png",
+    image: "/src/images/AirMouseLogo.png",
     video: "/src/videos/Air-Mouse-Demo.mp4",
     link: "https://github.com/krishivpan/Air-Mouse",
   },
