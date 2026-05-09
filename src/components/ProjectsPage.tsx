@@ -22,7 +22,8 @@ const projects: Project[] = [
   },
   {
     title: "Order Flow",
-    image: "/src/images/projects/project2.png",
+    image: "/src/images/orderflow-img.png",
+    video: "/src/videos/OrderFlow-Demo.mp4",
     link: "https://github.com/billnhatnguyen/orderFlow",
   },
   {
