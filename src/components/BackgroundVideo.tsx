@@ -16,7 +16,7 @@ export default function BackgroundVideo() {
       }}
     >
       {/* WebM first — better compression, supported by Chrome/Firefox */}
-      <source src="/src/videos/justin-dance.webm" type="video/webm" />
+      <source src="/videos/justin-dance.webm" type="video/webm" />
       {/* MP4 fallback — Safari + older browsers */}
     </video>
   );

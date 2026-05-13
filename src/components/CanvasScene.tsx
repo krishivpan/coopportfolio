@@ -37,7 +37,7 @@ export default function CanvasScene() {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    character.src = "/src/images/character.png";
+    character.src = "/images/character.png";
 
     let animationFrameId: number | null = null;
 

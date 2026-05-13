@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <main className="main-content">
       <section className="introduction">
-        <img className="name" src="/src/images/name.png" alt="krishiv handwritten" />
+        <img className="name" src="/images/name.png" alt="krishiv handwritten" />
         <p>
           Computer Engineering @ YorkU
           <br />Toronto, Ontario, Canada

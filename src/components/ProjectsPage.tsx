@@ -10,26 +10,26 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Violina",
-    image: "/src/images/violina-img.png",
-    video: "/src/videos/violina-demo.mp4",
+    image: "/images/violina-img.png",
+    video: "/videos/violina-demo.mp4",
     link: "https://github.com/hans-hc/Violina",
   },
   {
     title: "Air Mouse",
-    image: "/src/images/AirMouseLogo.png",
-    video: "/src/videos/Air-Mouse-Demo.mp4",
+    image: "/images/AirMouseLogo.png",
+    video: "/videos/Air-Mouse-Demo.mp4",
     link: "https://github.com/krishivpan/Air-Mouse",
   },
   {
     title: "Order Flow",
-    image: "/src/images/orderflow-img.png",
-    video: "/src/videos/OrderFlow-Demo.mp4",
+    image: "/images/orderflow-img.png",
+    video: "/videos/OrderFlow-Demo.mp4",
     link: "https://github.com/billnhatnguyen/orderFlow",
   },
   {
     title: "Aim Corner",
-    image: "/src/images/aim-corner-img.png",
-    video: "/src/videos/Aim-Corner-Demo.mp4",
+    image: "/images/aim-corner-img.png",
+    video: "/videos/Aim-Corner-Demo.mp4",
     link: "https://github.com/krishivpan/AimCorner",
   },
 ];

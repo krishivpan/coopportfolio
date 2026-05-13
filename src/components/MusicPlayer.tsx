@@ -91,7 +91,7 @@ export default function MusicPlayer({ onPlayingChange }: MusicPlayerProps) {
     <div className="music-player">
       <div className="ipod-img">
         <img src={songs[index].cover} className="album-cover" alt="album cover" />
-        <img src="src/images/ipod.png" className="ipod-frame" alt="iPod" />
+        <img src="/images/ipod.png" className="ipod-frame" alt="iPod" />
         <button className="btn play" onClick={playPause} />
         <button className="btn next" onClick={next} />
         <button className="btn prev" onClick={prev} />
