@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import MusicPlayer from "./MusicPlayer";
 
 interface NavbarProps {
@@ -6,17 +7,38 @@ interface NavbarProps {
 }
 
 export default function Navbar({ onPlayingChange }: NavbarProps) {
-  return (
-    <nav className="navbar">
-      <ul className="nav-links">
-        <li><Link to="/">me</Link></li>
-        <li><Link to="/projects">projects</Link></li>
-        {/* <li><a href="#badminton">badminton</a></li>
-        <li><a href="#strings">strings</a></li>
-        <li><a href="#books">books</a></li> */}
-      </ul>
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
-      <MusicPlayer onPlayingChange={onPlayingChange} />
-    </nav>
+  const closeMenu = () => setMenuOpen(false);
+
+  return (
+    <>
+      {/* ── Mobile top bar ── */}
+      <button
+        className="hamburger"
+        onClick={() => setMenuOpen(o => !o)}
+        aria-label="Toggle menu"
+      >
+        <span className={`hamburger-icon ${menuOpen ? "open" : ""}`} />
+      </button>
+
+      {/* ── Nav panel (sidebar on desktop, dropdown on mobile) ── */}
+      <nav className={`navbar ${menuOpen ? "navbar--open" : ""}`}>
+        <ul className="nav-links">
+          <li><Link to="/"         onClick={closeMenu}>me</Link></li>
+          <li><Link to="/projects" onClick={closeMenu}>projects</Link></li>
+          {/* <li><a href="#badminton" onClick={closeMenu}>badminton</a></li>
+          <li><a href="#strings"   onClick={closeMenu}>strings</a></li>
+          <li><a href="#books"     onClick={closeMenu}>books</a></li> */}
+        </ul>
+        <MusicPlayer onPlayingChange={onPlayingChange} />
+      </nav>
+
+      {/* ── Backdrop (mobile only) ── */}
+      {menuOpen && (
+        <div className="nav-backdrop" onClick={closeMenu} />
+      )}
+    </>
   );
 }
