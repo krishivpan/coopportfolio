@@ -35,7 +35,6 @@ export default function CanvasScene() {
     let animationFrameId: number | null = null;
 
     // Lens offsets measured at 1919×947 with character at natural size (scale=1)
-    const BASE_CHAR_W   = 460;  // approx natural width  — tweak if needed
     const BASE_VIEWPORT = 1919; // viewport width the measurements were taken on
 
     const lenses = [

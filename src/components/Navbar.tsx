@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MusicPlayer from "./MusicPlayer";
 
 interface NavbarProps {
@@ -8,7 +8,6 @@ interface NavbarProps {
 
 export default function Navbar({ onPlayingChange }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
 
   const closeMenu = () => setMenuOpen(false);
 
