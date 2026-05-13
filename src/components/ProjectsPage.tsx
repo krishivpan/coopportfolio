@@ -29,6 +29,7 @@ const projects: Project[] = [
   {
     title: "Aim Corner",
     image: "/src/images/aim-corner-img.png",
+    video: "/src/videos/Aim-Corner-Demo.mp4",
     link: "https://github.com/krishivpan/AimCorner",
   },
 ];

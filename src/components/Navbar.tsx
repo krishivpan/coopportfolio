@@ -11,9 +11,9 @@ export default function Navbar({ onPlayingChange }: NavbarProps) {
       <ul className="nav-links">
         <li><Link to="/">me</Link></li>
         <li><Link to="/projects">projects</Link></li>
-        <li><a href="#badminton">badminton</a></li>
+        {/* <li><a href="#badminton">badminton</a></li>
         <li><a href="#strings">strings</a></li>
-        <li><a href="#books">books</a></li>
+        <li><a href="#books">books</a></li> */}
       </ul>
 
       <MusicPlayer onPlayingChange={onPlayingChange} />
