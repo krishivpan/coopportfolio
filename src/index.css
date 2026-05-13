@@ -30,20 +30,66 @@ canvas {
   height: 100%;
 }
 
+/* ── Hamburger button (mobile only, hidden on desktop) ───────── */
+
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 200;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-icon {
+  position: relative;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.hamburger-icon::before { top: -7px; }
+.hamburger-icon::after  { top:  7px; }
+
+.hamburger-icon.open               { background: transparent; }
+.hamburger-icon.open::before       { transform: translateY(7px)  rotate(45deg);  }
+.hamburger-icon.open::after        { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Navbar ───────────────────────────────────────────────────── */
+
 .navbar {
   position: fixed;
   top: 3rem;
   left: 7rem;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 0.75rem 1rem;
-
   -webkit-user-select: none;
-  -ms-user-select: none;  
-  user-select: none;  
+  -ms-user-select: none;
+  user-select: none;
 }
+
+.nav-backdrop { display: none; }
 
 .nav-links {
   color: #FDFDFD;
@@ -70,6 +116,8 @@ canvas {
   display: inline-block;
 }
 
+/* ── Main content ─────────────────────────────────────────────── */
+
 .main-content {
   display: flex;
   flex-direction: column;
@@ -79,16 +127,17 @@ canvas {
   top: 3rem;
   width: calc(100% - 15rem);
   -webkit-user-select: none;
-  -moz-user-select: none; 
-  -ms-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
 .introduction > img {
-  width: 450px;
+  width: clamp(200px, 30vw, 450px);
   margin-left: -30px;
-  
 }
+
+/* ── About me ─────────────────────────────────────────────────── */
 
 .about-me ul {
   list-style: none;
@@ -102,7 +151,7 @@ canvas {
   gap: 0.75rem;
   margin: 1.25rem 0;
   line-height: 1.6;
-  
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
 }
 
 .about-me li::before {
@@ -117,7 +166,7 @@ canvas {
   flex-shrink: 0;
 }
 
-/* Music Player */
+/* ── Music Player ─────────────────────────────────────────────── */
 
 .music-player {
   display: flex;
@@ -125,23 +174,19 @@ canvas {
   margin-top: 40px;
 }
 
-/* iPod background */
 .ipod-img {
   margin-left: -100px;
   position: relative;
   width: 300px;
   height: 600px;
-
- 
   background-size: 70%;
   background-repeat: no-repeat;
   z-index: 1;
 }
 
-/* 🎵 Album cover inside screen */
 .album-cover {
   position: absolute;
-  top: 15px;     /* tweak these */
+  top: 15px;
   left: 25px;
   width: 160px;
   z-index: 1;
@@ -153,12 +198,10 @@ canvas {
   position: absolute;
   width: 70%;
   object-fit: contain;
-
   z-index: 2;
   pointer-events: none;
 }
 
-/* 🫥 Invisible buttons */
 .btn {
   position: absolute;
   background: transparent;
@@ -173,49 +216,25 @@ canvas {
   border-radius: 50%;
 }
 
-/* ▶ center button */
-.play {
-  top: 245px;
-  left: 80px;
+.play { top: 245px; left: 80px;  }
+.next { top: 205px; left: 120px; }
+.prev { top: 205px; left: 40px;  }
 
-}
+.btn:active { transform: scale(0.95); }
 
-/* ⏭ next */
-.next {
-  top: 205px;
-  left: 120px;
-}
+/* ── Page transition ──────────────────────────────────────────── */
 
-/* ⏮ prev */
-.prev {
-  top: 205px;
-  left: 40px;
-}
-
-/* optional click feedback */
-.btn:active {
-  transform: scale(0.95);
-}
-
-/* ── Page transition ───────────────────────────────────────── */
- 
 @keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
 }
- 
+
 .page-transition {
   animation: pageEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* ── Projects page ─────────────────────────────────────────── */
- 
+/* ── Projects page ────────────────────────────────────────────── */
+
 .projects-grid {
   display: flex;
   flex-wrap: wrap;
@@ -224,7 +243,7 @@ canvas {
   margin-top: 1rem;
   align-items: flex-start;
 }
- 
+
 .sticky-note {
   position: relative;
   width: 300px;
@@ -238,23 +257,23 @@ canvas {
   transform: rotate(-2deg);
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.35));
 }
- 
+
 .sticky-note:hover {
   transform: rotate(0deg) scale(1.12) translateY(-8px);
   filter: drop-shadow(6px 12px 16px rgba(0,0,0,0.5));
   z-index: 10;
 }
- 
-.sticky-note:nth-child(2n)   { transform: rotate(1.5deg); }
-.sticky-note:nth-child(3n)   { transform: rotate(-1deg); }
-.sticky-note:nth-child(4n)   { transform: rotate(2.5deg); }
- 
+
+.sticky-note:nth-child(2n) { transform: rotate(1.5deg);  }
+.sticky-note:nth-child(3n) { transform: rotate(-1deg);   }
+.sticky-note:nth-child(4n) { transform: rotate(2.5deg);  }
+
 .sticky-note:nth-child(2n):hover,
 .sticky-note:nth-child(3n):hover,
 .sticky-note:nth-child(4n):hover {
   transform: rotate(0deg) scale(1.12) translateY(-8px);
 }
- 
+
 .sticky-note-inner {
   position: absolute;
   inset: 0;
@@ -266,8 +285,7 @@ canvas {
   gap: 10px;
   transform: rotate(-2deg);
 }
- 
-/* Wrapper so image and video occupy the same space */
+
 .sticky-media {
   position: relative;
   width: 90%;
@@ -276,7 +294,7 @@ canvas {
   border-radius: 3px;
   overflow: hidden;
 }
- 
+
 .sticky-project-img,
 .sticky-project-video {
   position: absolute;
@@ -287,28 +305,13 @@ canvas {
   border-radius: 3px;
   transition: opacity 0.3s ease;
 }
- 
-/* Image sits on top by default */
-.sticky-project-img {
-  opacity: 1;
-  z-index: 1;
-}
- 
-/* When a video exists, fade the image out on hover */
-.sticky-note:hover .sticky-project-img.has-video {
-  opacity: 0;
-}
- 
-/* Video starts invisible, fades in on hover */
-.sticky-project-video {
-  opacity: 0;
-  z-index: 2;
-}
- 
-.sticky-note:hover .sticky-project-video {
-  opacity: 1;
-}
- 
+
+.sticky-project-img   { opacity: 1; z-index: 1; }
+.sticky-project-video { opacity: 0; z-index: 2; }
+
+.sticky-note:hover .sticky-project-img.has-video { opacity: 0; }
+.sticky-note:hover .sticky-project-video         { opacity: 1; }
+
 .sticky-title {
   font-size: 1rem;
   font-weight: 600;
@@ -318,4 +321,132 @@ canvas {
   line-height: 1.3;
   position: relative;
   z-index: 3;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Tablet (≤ 1024px) ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .navbar {
+    left: 3rem;
+    top: 2rem;
+  }
+
+  .main-content {
+    left: 14rem;
+    top: 2rem;
+    width: calc(100% - 16rem);
+  }
+
+  .sticky-note {
+    width: 220px;
+    height: 220px;
+  }
+
+  .ipod-img {
+    width: 220px;
+    height: 440px;
+    margin-left: -60px;
+  }
+
+  .album-cover {
+    width: 115px;
+    top: 11px;
+    left: 18px;
+  }
+
+  .play { top: 178px; left: 58px;  }
+  .next { top: 148px; left: 88px;  }
+  .prev { top: 148px; left: 28px;  }
+}
+
+/* ── Mobile (≤ 640px) ─────────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* Show hamburger */
+  .hamburger { display: block; }
+
+  /* Slide-in drawer */
+  .navbar {
+    top: 0;
+    left: 0;
+    width: 75vw;
+    max-width: 280px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    padding: 5rem 2rem 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow-y: auto;
+  }
+
+  .navbar--open {
+    transform: translateX(0);
+  }
+
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .nav-links li {
+    font-size: 1.2rem;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Full-width content */
+  .main-content {
+    left: 1.25rem;
+    top: 4rem;
+    width: calc(100% - 2.5rem);
+  }
+
+  .introduction > img {
+    width: clamp(160px, 60vw, 280px);
+    margin-left: 0;
+  }
+
+  .about-me li {
+    font-size: 0.85rem;
+    margin: 0.9rem 0;
+  }
+
+  /* 2-column sticky note grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding-right: 0;
+  }
+
+  .sticky-note {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+  }
+
+  /* iPod shrinks to fit */
+  .music-player { margin-top: 20px; }
+
+  .ipod-img {
+    width: 160px;
+    height: 320px;
+    margin-left: -30px;
+  }
+
+  .album-cover {
+    width: 84px;
+    top: 8px;
+    left: 13px;
+  }
+
+  .play { top: 130px; left: 42px; width: 38px; height: 38px; }
+  .next { top: 108px; left: 64px; width: 38px; height: 38px; }
+  .prev { top: 108px; left: 20px; width: 38px; height: 38px; }
 }
