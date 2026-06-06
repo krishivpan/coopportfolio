@@ -85,7 +85,7 @@ export default function CanvasScene() {
         const drawW  = natW * scale;
         const drawH  = natH * scale;
         const charX  = width  - drawW;
-        const charY  = height - drawH;
+        const charY  = height - drawH + 9;
 
         ctx.drawImage(character, charX, charY, drawW, drawH);
 
