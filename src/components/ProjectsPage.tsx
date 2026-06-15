@@ -32,6 +32,12 @@ const projects: Project[] = [
     video: "/videos/Aim-Corner-Demo.mp4",
     link: "https://github.com/krishivpan/AimCorner",
   },
+  {
+    title: "SanjAI",
+    image: "/images/sanjai-img.png",
+    video: "/videos/SanjAI-Demo.mp4",
+    link: "https://github.com/krishivpan/SanjAI",
+  },
 ];
 
 function StickyCard({ project }: { project: Project }) {
