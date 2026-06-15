@@ -17,7 +17,7 @@ export default function HomePage() {
           <li>raised ~$1000 for cancer research</li>
           <li>use JS/TS, Python, C/C++, Java, Swift</li>
           <li>building a <Highlighter color="rgba(4, 217, 255, 0.5)">cinematic drone</Highlighter> from scratch to film my own documentary</li>
-          <li>trying new things until there isn't anything left</li>
+          <li>Seeking Fall 2026 Opportunities</li>
         </ul>
       </section>
     </main>
