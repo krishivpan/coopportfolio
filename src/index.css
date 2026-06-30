@@ -166,61 +166,63 @@ canvas {
   flex-shrink: 0;
 }
 
-/* ── Music Player ─────────────────────────────────────────────── */
+/* ── Music Player (hidden on mobile, see MusicPlayer.tsx) ───────── */
 
-.music-player {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
+@media (min-width: 640px) {
+  .music-player {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .ipod-img {
+    margin-left: -100px;
+    position: relative;
+    width: 300px;
+    height: 600px;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  .album-cover {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    width: 160px;
+    z-index: 1;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .ipod-frame {
+    position: absolute;
+    width: 70%;
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .btn {
+    position: absolute;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  .play, .next, .prev {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .play { top: 245px; left: 80px;  }
+  .next { top: 205px; left: 120px; }
+  .prev { top: 205px; left: 40px;  }
+
+  .btn:active { transform: scale(0.95); }
 }
-
-.ipod-img {
-  margin-left: -100px;
-  position: relative;
-  width: 300px;
-  height: 600px;
-  background-size: 70%;
-  background-repeat: no-repeat;
-  z-index: 1;
-}
-
-.album-cover {
-  position: absolute;
-  top: 15px;
-  left: 25px;
-  width: 160px;
-  z-index: 1;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.ipod-frame {
-  position: absolute;
-  width: 70%;
-  object-fit: contain;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.btn {
-  position: absolute;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 3;
-}
-
-.play, .next, .prev {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
-.play { top: 245px; left: 80px;  }
-.next { top: 205px; left: 120px; }
-.prev { top: 205px; left: 40px;  }
-
-.btn:active { transform: scale(0.95); }
 
 /* ── Page transition ──────────────────────────────────────────── */
 
@@ -430,23 +432,4 @@ canvas {
     height: 0;
     padding-bottom: 100%;
   }
-
-  /* iPod shrinks to fit */
-  .music-player { margin-top: 20px; }
-
-  .ipod-img {
-    width: 160px;
-    height: 320px;
-    margin-left: -30px;
-  }
-
-  .album-cover {
-    width: 84px;
-    top: 8px;
-    left: 13px;
-  }
-
-  .play { top: 130px; left: 42px; width: 38px; height: 38px; }
-  .next { top: 108px; left: 64px; width: 38px; height: 38px; }
-  .prev { top: 108px; left: 20px; width: 38px; height: 38px; }
 }
