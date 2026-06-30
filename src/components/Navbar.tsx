@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import MusicPlayer from "./MusicPlayer";
+import useWindowWidth from "../hooks/useWindowWidth";
 
 interface NavbarProps {
   onPlayingChange: (playing: boolean) => void;
 }
 
+const MOBILE_BREAKPOINT = 640;
+
 export default function Navbar({ onPlayingChange }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const width = useWindowWidth();
+  const isMobile = width < MOBILE_BREAKPOINT;
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -31,7 +36,7 @@ export default function Navbar({ onPlayingChange }: NavbarProps) {
           <li><a href="#strings"   onClick={closeMenu}>strings</a></li>
           <li><a href="#books"     onClick={closeMenu}>books</a></li> */}
         </ul>
-        <MusicPlayer onPlayingChange={onPlayingChange} />
+        {!isMobile && <MusicPlayer onPlayingChange={onPlayingChange} />}
       </nav>
 
       {/* ── Backdrop (mobile only) ── */}
