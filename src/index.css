@@ -14,11 +14,12 @@ body,
   height: 100%;
   min-height: 100%;
   overflow: hidden;
+  overscroll-behavior: none;
+  background-color: #a74635;
 }
 
 body {
   font-family: system-ui, sans-serif;
-  background-color: #a74635;
   background-repeat: no-repeat;
 }
 
@@ -370,8 +371,8 @@ canvas {
   .prev { top: 148px; left: 28px;  }
 }
 
-/* ── Mobile (≤ 640px) ─────────────────────────────────────────── */
-@media (max-width: 640px) {
+/* ── Mobile (≤ 640px, or short-edge phones in landscape) ────────── */
+@media (max-width: 640px), (max-height: 640px) and (pointer: coarse) {
 
   /* Show hamburger */
   .hamburger { display: block; }
