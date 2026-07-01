@@ -31,6 +31,7 @@ export default function App() {
         {!isMobile && <div style={fadeStyle(isPlaying)}><BackgroundVideo /></div>}
         <FadingPen />
         <Navbar onPlayingChange={setIsPlaying} />
+        <SocialLinks />
 
         <PageTransition>
           <Routes>
