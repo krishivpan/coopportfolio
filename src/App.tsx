@@ -8,9 +8,14 @@ import HomePage from "./components/HomePage";
 import ProjectsPage from "./components/ProjectsPage";
 import ClickSpark from "./effects/ClickSpark";
 import FadingPen from "./effects/FadingPen";
+import useWindowWidth from "./hooks/useWindowWidth";
+
+const MOBILE_BREAKPOINT = 640;
 
 export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const width = useWindowWidth();
+  const isMobile = width < MOBILE_BREAKPOINT;
 
   const fadeStyle = (visible: boolean): React.CSSProperties => ({
     opacity: visible ? 1 : 0,
@@ -24,8 +29,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <ClickSpark sparkColor="#fff" sparkCount={8} sparkRadius={20} duration={400}>
-        <div style={fadeStyle(!isPlaying)}><CanvasScene /></div>
-        <div style={fadeStyle(isPlaying)}><BackgroundVideo /></div>
+        {!isMobile && <div style={fadeStyle(!isPlaying)}><CanvasScene /></div>}
+        {!isMobile && <div style={fadeStyle(isPlaying)}><BackgroundVideo /></div>}
         <FadingPen />
         <Navbar onPlayingChange={setIsPlaying} />
 
