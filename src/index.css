@@ -147,7 +147,7 @@ canvas {
 
 .about-me li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   margin: 1.25rem 0;
   line-height: 1.6;
@@ -159,11 +159,17 @@ canvas {
   display: inline-block;
   width: 1.15rem;
   height: 1.15rem;
+  margin-top: 0.2em;
   background-image: url("/images/star.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   flex-shrink: 0;
+}
+
+.li-text {
+  flex: 1;
+  min-width: 0;
 }
 
 /* ── Music Player (hidden on mobile, see MusicPlayer.tsx) ───────── */
@@ -407,6 +413,15 @@ canvas {
     left: 1.25rem;
     top: 4rem;
     width: calc(100% - 2.5rem);
+    max-height: calc(100vh - 5rem);
+    overflow-y: auto;
+    padding-bottom: 2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .main-content::-webkit-scrollbar {
+    display: none;
   }
 
   .introduction > img {
@@ -414,9 +429,20 @@ canvas {
     margin-left: 0;
   }
 
+  .introduction p {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .about-me {
+    margin-top: 0.5rem;
+  }
+
   .about-me li {
-    font-size: 0.85rem;
-    margin: 0.9rem 0;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+    gap: 0.6rem;
   }
 
   /* 2-column sticky note grid */
