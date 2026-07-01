@@ -2,27 +2,37 @@ const links = [
   {
     href: "https://github.com/krishivpan",
     label: "GitHub",
-    color: "rgba(31, 81, 255, 0.5)",
-    path: "M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.39 7.86 10.91.57.11.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z",
+    icon: (
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+    ),
   },
   {
     href: "https://www.linkedin.com/in/krishiv-panchal/",
     label: "LinkedIn",
-    color: "rgba(4, 217, 255, 0.5)",
-    path: "M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56z",
+    icon: (
+      <>
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect x="2" y="9" width="4" height="12" />
+        <circle cx="4" cy="4" r="2" />
+      </>
+    ),
   },
   {
     href: "mailto:krishiv.panc@gmail.com",
     label: "Email",
-    color: "rgba(57, 255, 20, 0.5)",
-    path: "M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5zM4.5 5a.5.5 0 0 0-.5.5v.379l8 5.333 8-5.333V5.5a.5.5 0 0 0-.5-.5zM20 7.462l-7.445 4.963a1 1 0 0 1-1.11 0L4 7.462V18.5a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5z",
+    icon: (
+      <>
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
+      </>
+    ),
   },
 ];
 
 export default function SocialLinks() {
   return (
     <div className="social-links">
-      {links.map(({ href, label, color, path }) => (
+      {links.map(({ href, label, icon }) => (
         <a
           key={label}
           href={href}
@@ -30,10 +40,9 @@ export default function SocialLinks() {
           rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
           aria-label={label}
           className="social-link"
-          style={{ background: color }}
         >
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d={path} />
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            {icon}
           </svg>
         </a>
       ))}
