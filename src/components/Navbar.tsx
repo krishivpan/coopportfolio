@@ -30,7 +30,7 @@ export default function Navbar({ onPlayingChange }: NavbarProps) {
         <ul className="nav-links">
           <li><Link to="/"         onClick={closeMenu}>me</Link></li>
           <li><Link to="/projects" onClick={closeMenu}>projects</Link></li>
-          {/* <li><a href="#badminton" onClick={closeMenu}>badminton</a></li>
+          {/* <li><a href="#music" onClick={closeMenu}>music</a></li>
           <li><a href="#strings"   onClick={closeMenu}>strings</a></li>
           <li><a href="#books"     onClick={closeMenu}>books</a></li> */}
         </ul>
