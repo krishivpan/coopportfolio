@@ -26,6 +26,7 @@ export default function Navbar({ onPlayingChange }: NavbarProps) {
 
       {/* ── Nav panel (sidebar on desktop, dropdown on mobile) ── */}
       <nav className={`navbar ${menuOpen ? "navbar--open" : ""}`}>
+        <span className="nav-drawer-label">menu</span>
         <ul className="nav-links">
           <li><Link to="/"         onClick={closeMenu}>me</Link></li>
           <li><Link to="/projects" onClick={closeMenu}>projects</Link></li>
