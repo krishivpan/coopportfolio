@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BackgroundVideo from "./components/BackgroundVideo";
 import CanvasScene from "./components/CanvasScene";
 import Navbar from "./components/Navbar";
+import SocialLinks from "./components/SocialLinks";
 import PageTransition from "./effects/PageTransition";
 import HomePage from "./components/HomePage";
 import ProjectsPage from "./components/ProjectsPage";
@@ -30,6 +31,7 @@ export default function App() {
         {!isMobile && <div style={fadeStyle(isPlaying)}><BackgroundVideo /></div>}
         <FadingPen />
         <Navbar onPlayingChange={setIsPlaying} />
+        <SocialLinks />
 
         <PageTransition>
           <Routes>
