@@ -8,14 +8,11 @@ import HomePage from "./components/HomePage";
 import ProjectsPage from "./components/ProjectsPage";
 import ClickSpark from "./effects/ClickSpark";
 import FadingPen from "./effects/FadingPen";
-import useWindowWidth from "./hooks/useWindowWidth";
-
-const MOBILE_BREAKPOINT = 640;
+import useIsMobile from "./hooks/useIsMobile";
 
 export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const width = useWindowWidth();
-  const isMobile = width < MOBILE_BREAKPOINT;
+  const isMobile = useIsMobile();
 
   const fadeStyle = (visible: boolean): React.CSSProperties => ({
     opacity: visible ? 1 : 0,
