@@ -35,8 +35,8 @@ canvas {
 /* ── Social links (top right) ────────────────────────────────── */
 
 @keyframes socialDrop {
-  from { opacity: 0; transform: translateY(-14px) rotate(-8deg); }
-  to   { opacity: 1; transform: translateY(0)      rotate(0deg); }
+  from { opacity: 0; transform: translateY(-14px) scale(0.8) rotate(-12deg); }
+  to   { opacity: 1; transform: translateY(0)      scale(1)   rotate(var(--tilt, 0deg)); }
 }
 
 .social-links {
@@ -45,7 +45,7 @@ canvas {
   right: clamp(1.25rem, 3vw, 2.5rem);
   z-index: 150;
   display: flex;
-  gap: clamp(0.6rem, 1.5vw, 1rem);
+  gap: clamp(0.4rem, 1.2vw, 0.85rem);
   -webkit-user-select: none;
   user-select: none;
 }
@@ -54,36 +54,34 @@ canvas {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(2rem, 4vw, 2.5rem);
-  height: clamp(2rem, 4vw, 2.5rem);
-  border-radius: 50%;
+  width: clamp(2.1rem, 4.2vw, 2.65rem);
+  height: clamp(2.1rem, 4.2vw, 2.65rem);
   color: #FDFDFD;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transform: rotate(var(--tilt, 0deg));
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.3s ease;
+              filter 0.3s ease;
   animation: socialDrop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.social-link:nth-child(1) { animation-delay: 0.35s; }
-.social-link:nth-child(2) { animation-delay: 0.45s; }
-.social-link:nth-child(3) { animation-delay: 0.55s; }
+/* Each icon sits at a slight hand-drawn tilt, like the sticky notes */
+.social-link:nth-child(1) { --tilt: -6deg; animation-delay: 0.35s; }
+.social-link:nth-child(2) { --tilt: 4deg;  animation-delay: 0.45s; }
+.social-link:nth-child(3) { --tilt: -3deg; animation-delay: 0.55s; }
 
 .social-link svg {
-  width: 55%;
-  height: 55%;
+  width: 62%;
+  height: 62%;
 }
 
 .social-link:hover {
-  transform: translateY(-4px) scale(1.15) rotate(-6deg);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  transform: rotate(0deg) scale(1.2) translateY(-3px);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }
 
-.social-link:nth-child(2):hover { transform: translateY(-4px) scale(1.15) rotate(6deg); }
-.social-link:nth-child(3):hover { transform: translateY(-4px) scale(1.15) rotate(-5deg); }
-
 .social-link:active {
-  transform: translateY(-1px) scale(0.95);
+  transform: rotate(0deg) scale(0.92);
 }
 
 /* ── Hamburger button (mobile only, hidden on desktop) ───────── */
