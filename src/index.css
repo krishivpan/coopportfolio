@@ -12,6 +12,7 @@ body,
 #root {
   width: 100%;
   height: 100%;
+  height: 100dvh; /* stays in sync with mobile browsers' collapsing toolbar, unlike 100% */
   min-height: 100%;
   overflow: hidden;
   overscroll-behavior: none;
@@ -91,6 +92,7 @@ canvas {
 }
 
 .nav-backdrop { display: none; }
+.nav-drawer-label { display: none; }
 
 .nav-links {
   color: #FDFDFD;
@@ -377,16 +379,18 @@ canvas {
   /* Show hamburger */
   .hamburger { display: block; }
 
-  /* Slide-in drawer */
+  /* Slide-in drawer — anchored with inset (not height:100%) so it always
+     matches the true visible viewport, even while a mobile browser's
+     toolbar is collapsing/expanding. */
   .navbar {
     top: 0;
     left: 0;
+    bottom: 0;
     width: 75vw;
     max-width: 280px;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(12px);
-    padding: 5rem 2rem 2rem;
+    background: linear-gradient(165deg, #c2573f 0%, #8f3626 100%);
+    box-shadow: 6px 0 28px rgba(0, 0, 0, 0.35);
+    padding: 5.5rem 2rem 2rem;
     transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     overflow-y: auto;
@@ -396,17 +400,46 @@ canvas {
     transform: translateX(0);
   }
 
+  .nav-drawer-label {
+    display: block;
+    font-family: "Fuzzy Bubbles", "Inter", sans-serif;
+    font-size: 1.5rem;
+    color: #FDFDFD;
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+
   .nav-backdrop {
     display: block;
     position: fixed;
     inset: 0;
     z-index: 90;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(30, 12, 6, 0.5);
   }
 
   .nav-links li {
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.15rem;
+    font-weight: 600;
     margin-bottom: 1.75rem;
+  }
+
+  .nav-links li::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background-image: url("/images/star.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+
+  .nav-links a:active {
+    opacity: 0.7;
   }
 
   /* Full-width content */
@@ -414,7 +447,7 @@ canvas {
     left: 1.25rem;
     top: 4rem;
     width: calc(100% - 2.5rem);
-    max-height: calc(100vh - 5rem);
+    max-height: calc(100dvh - 5rem);
     overflow-y: auto;
     padding-bottom: 2rem;
     scrollbar-width: none;
