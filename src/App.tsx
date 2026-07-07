@@ -11,7 +11,7 @@ import ClickSpark from "./effects/ClickSpark";
 import FadingPen from "./effects/FadingPen";
 import useIsMobile from "./hooks/useIsMobile";
 
-import { Analytics } from "@vercel/analytics/next"  // Vercel Analytics
+import { Analytics } from "@vercel/analytics/react"  // Vercel Analytics
 
 export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
