@@ -11,6 +11,8 @@ import ClickSpark from "./effects/ClickSpark";
 import FadingPen from "./effects/FadingPen";
 import useIsMobile from "./hooks/useIsMobile";
 
+import { Analytics } from "@vercel/analytics/next"  // Vercel Analytics
+
 export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const isMobile = useIsMobile();
@@ -26,6 +28,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+    <Analytics/>
       <ClickSpark sparkColor="#fff" sparkCount={8} sparkRadius={20} duration={400}>
         {!isMobile && <div style={fadeStyle(!isPlaying)}><CanvasScene /></div>}
         {!isMobile && <div style={fadeStyle(isPlaying)}><BackgroundVideo /></div>}
