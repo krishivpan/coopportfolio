@@ -7,6 +7,8 @@ interface MusicPlayerProps {
 const FADE_DURATION = 1500; // ms — match your CSS transition duration in App.tsx
 const FADE_INTERVAL = 16;   // ms between volume steps (~60fps)
 
+const HINT_DURATION = 15000; // ms the "click me" hint stays visible before fading
+
 export default function MusicPlayer({ onPlayingChange }: MusicPlayerProps) {
   const audioRef  = useRef<HTMLAudioElement | null>(null);
   const fadeTimer = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -17,10 +19,30 @@ export default function MusicPlayer({ onPlayingChange }: MusicPlayerProps) {
 
   const [index, setIndex]     = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showHint, setShowHint]   = useState(true);
+  const [hintLeaving, setHintLeaving] = useState(false);
 
   useEffect(() => {
     onPlayingChange(isPlaying);
   }, [isPlaying, onPlayingChange]);
+
+  // ── "Click me" hint on the play button ──────────────────────────────────────
+
+  useEffect(() => {
+    const startFade = setTimeout(() => setHintLeaving(true), HINT_DURATION);
+    const unmount    = setTimeout(() => setShowHint(false), HINT_DURATION + 400);
+    return () => {
+      clearTimeout(startFade);
+      clearTimeout(unmount);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isPlaying) return;
+    setHintLeaving(true);
+    const unmount = setTimeout(() => setShowHint(false), 400);
+    return () => clearTimeout(unmount);
+  }, [isPlaying]);
 
   // ── Fade helpers ────────────────────────────────────────────────────────────
 
@@ -95,6 +117,29 @@ export default function MusicPlayer({ onPlayingChange }: MusicPlayerProps) {
         <button className="btn play" onClick={playPause} />
         <button className="btn next" onClick={next} />
         <button className="btn prev" onClick={prev} />
+
+        {showHint && (
+          <div className={`play-hint ${hintLeaving ? "play-hint--leaving" : ""}`} aria-hidden="true">
+            <svg className="play-hint-arrow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18 84 C 20 78, 28 75, 40 72 C 70 65, 95 40, 81 10"
+                stroke="#FDFDFD"
+                strokeWidth="4.5"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path
+                d="M66 24 L81 10 L92 26"
+                stroke="#FDFDFD"
+                strokeWidth="4.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg>
+            <span className="play-hint-text">click me!</span>
+          </div>
+        )}
       </div>
       <audio ref={audioRef} src={songs[index].src} onEnded={next} />
     </div>
