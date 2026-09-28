@@ -5,7 +5,10 @@ import CanvasScene from "./components/CanvasScene";
 import Navbar from "./components/Navbar";
 import SocialLinks from "./components/SocialLinks";
 import PageTransition from "./effects/PageTransition";
-import HomePage from "./components/HomePage";
+import AboutPage from "./components/AboutPage";
+import CareerPage from "./components/CareerPage";
+import GoalsPage from "./components/GoalsPage";
+import PortfolioPage from "./components/PortfolioPage";
 import ProjectsPage from "./components/ProjectsPage";
 import ClickSpark from "./effects/ClickSpark";
 import FadingPen from "./effects/FadingPen";
@@ -40,8 +43,11 @@ export default function App() {
 
         <PageTransition>
           <Routes>
-            <Route path="/"         element={<HomePage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/"          element={<AboutPage />} />
+            <Route path="/career"    element={<CareerPage />} />
+            <Route path="/goals"     element={<GoalsPage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/projects"  element={<ProjectsPage />} />
           </Routes>
         </PageTransition>
 

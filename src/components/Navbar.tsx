@@ -28,11 +28,11 @@ export default function Navbar({ onPlayingChange }: NavbarProps) {
       <nav className={`navbar ${menuOpen ? "navbar--open" : ""}`}>
         <span className="nav-drawer-label">menu</span>
         <ul className="nav-links">
-          <li><Link to="/"         onClick={closeMenu}>me</Link></li>
-          <li><Link to="/projects" onClick={closeMenu}>projects</Link></li>
-          {/* <li><a href="#music" onClick={closeMenu}>music</a></li>
-          <li><a href="#strings"   onClick={closeMenu}>strings</a></li>
-          <li><a href="#books"     onClick={closeMenu}>books</a></li> */}
+          <li><Link to="/"          onClick={closeMenu}>about</Link></li>
+          <li><Link to="/projects"  onClick={closeMenu}>projects</Link></li>
+          <li><Link to="/career"    onClick={closeMenu}>career</Link></li>
+          <li><Link to="/goals"     onClick={closeMenu}>goals</Link></li>
+          <li><Link to="/portfolio" onClick={closeMenu}>portfolio</Link></li>
         </ul>
         {!isMobile && <MusicPlayer onPlayingChange={onPlayingChange} />}
       </nav>

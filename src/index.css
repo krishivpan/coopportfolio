@@ -181,10 +181,19 @@ canvas {
   left: 20rem;
   top: 3rem;
   width: calc(100% - 15rem);
+  max-height: calc(100dvh - 6rem);
+  overflow-y: auto;
+  padding-bottom: 3rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.main-content::-webkit-scrollbar {
+  display: none;
 }
 
 .introduction > img {
@@ -192,7 +201,55 @@ canvas {
   margin-left: -30px;
 }
 
+.eportfolio-note {
+  margin-top: 0.85rem;
+  max-width: 40ch;
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Shared page section styles (Career / Goals / Portfolio) ────── */
+
+.page-section {
+  margin-bottom: 2.5rem;
+  max-width: 62ch;
+}
+
+.page-section:last-child {
+  margin-bottom: 0;
+}
+
+.page-heading {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+}
+
+.about-me .page-heading {
+  margin-bottom: 1.25rem;
+}
+
+.section-heading {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  margin-bottom: 1rem;
+}
+
+.lede {
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* ── About me ─────────────────────────────────────────────────── */
+
+.about-me {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
 
 .about-me ul {
   list-style: none;
@@ -521,7 +578,7 @@ canvas {
   }
 
   .about-me {
-    margin-top: 0.5rem;
+    margin-top: 2rem;
   }
 
   .about-me li {
@@ -529,6 +586,10 @@ canvas {
     line-height: 1.5;
     margin: 1rem 0;
     gap: 0.6rem;
+  }
+
+  .page-section {
+    max-width: 100%;
   }
 
   /* 2-column sticky note grid */
