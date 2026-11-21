@@ -1,3 +1,5 @@
+import SiteFooter from "./SiteFooter";
+
 export default function PortfolioPage() {
   return (
     <main className="main-content">
@@ -5,6 +7,7 @@ export default function PortfolioPage() {
         <h1 className="page-heading">Work Portfolio</h1>
         <p className="lede">This section is under construction.</p>
       </section>
+      <SiteFooter />
     </main>
   );
 }

@@ -1,3 +1,5 @@
+import SiteFooter from "./SiteFooter";
+
 export default function GoalsPage() {
   return (
     <main className="main-content">
@@ -5,6 +7,7 @@ export default function GoalsPage() {
         <h1 className="page-heading">Goals</h1>
         <p className="lede">This section is under construction.</p>
       </section>
+      <SiteFooter />
     </main>
   );
 }

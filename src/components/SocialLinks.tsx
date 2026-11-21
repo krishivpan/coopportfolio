@@ -18,7 +18,7 @@ const links = [
     ),
   },
   {
-    href: "mailto:krishiv.panc@gmail.com",
+    href: "mailto:krishivp@my.yorku.ca",
     label: "Email",
     icon: (
       <>
