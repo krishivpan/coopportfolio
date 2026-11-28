@@ -164,6 +164,12 @@ export default function CareerPage() {
             Download ↓
           </a>
         </div>
+        <object className="resume-viewer" data={RESUME_URL} type="application/pdf" aria-label="Krishiv Panchal's resume">
+          <p className="lede">
+            Your browser can’t show the PDF here.{" "}
+            <a className="text-link" href={RESUME_URL} target="_blank" rel="noopener noreferrer">Open it in a new tab ↗</a>
+          </p>
+        </object>
       </section>
 
       <SiteFooter />

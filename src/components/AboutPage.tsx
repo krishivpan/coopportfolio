@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Highlighter from "../effects/Highlighter";
 import CompetencyTags from "./CompetencyTags";
 import SiteFooter from "./SiteFooter";
@@ -19,6 +20,14 @@ export default function AboutPage() {
             my co-op term, including my goals, my background, and the
             reflections I write along the way.
           </p>
+          <div className="resume-links">
+            <a className="text-link" href="/Krishiv_Resume_COOP.pdf" target="_blank" rel="noopener noreferrer">
+              View my resume ↗
+            </a>
+            <Link className="text-link" to="/career">
+              See my experience →
+            </Link>
+          </div>
         </div>
         <figure className="polaroid photo-frame">
           <img src="/images/krishiv.jpg" alt="Krishiv Panchal" />
@@ -62,7 +71,7 @@ export default function AboutPage() {
           <p>
             My favourite teacher was Mr. Burke; he taught Grade 12 calculus, and he was very
             strict. Even though he was strict, I admired his dedication to helping students
-            succeed. While I despised the constant tests, he taught me that consistency is the
+            succeed. The constant tests challenged me, but they taught me that consistency is the
             key to success in every aspect of life.
           </p>
           <p>
@@ -83,7 +92,7 @@ export default function AboutPage() {
         </a>
 
         <ul>
-          <li><span className="li-text">Currently working as a <Highlighter color="rgba(31, 81, 255, 0.5)">Optical Test Intern</Highlighter>, starting Fall 2026</span></li>
+          <li><span className="li-text">Currently an <Highlighter color="rgba(31, 81, 255, 0.5)">Optical Software Engineering Intern at Nokia</Highlighter> in Ottawa (co-op, since September 2026)</span></li>
           <li><span className="li-text">Raised approximately $1,000 in donations for cancer research</span></li>
           <li><span className="li-text">Proficient in <Highlighter color="rgba(4, 217, 255, 0.5)">JavaScript/TypeScript, Python, C/C++, Java, and Swift</Highlighter></span></li>
           <li><span className="li-text">Designing and building a cinematic drone from scratch to film an original documentary</span></li>

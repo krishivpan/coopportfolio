@@ -38,8 +38,17 @@ export default function Navbar({ onPlayingChange }: NavbarProps) {
                             projects
                         </Link>
                     </li>
-                    {/* <li><Link to="/career"    onClick={closeMenu}>career</Link></li>
-          <li><Link to="/goals"     onClick={closeMenu}>goals</Link></li>
+                    <li>
+                        <Link to="/career" onClick={closeMenu}>
+                            career
+                        </Link>
+                    </li>
+                    <li>
+                        <a href="/Krishiv_Resume_COOP.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+                            resume
+                        </a>
+                    </li>
+                    {/* <li><Link to="/goals"     onClick={closeMenu}>goals</Link></li>
           <li><Link to="/portfolio" onClick={closeMenu}>portfolio</Link></li> */}
                 </ul>
                 {!isMobile && <MusicPlayer onPlayingChange={onPlayingChange} />}
