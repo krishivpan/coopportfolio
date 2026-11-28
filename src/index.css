@@ -528,6 +528,17 @@ canvas {
   gap: 0.5rem 1.75rem;
 }
 
+.resume-viewer {
+  display: block;
+  width: 100%;
+  max-width: 820px;
+  height: min(80vh, 1060px);
+  margin-top: 1rem;
+  border-radius: 4px;
+  background: #FDFDFD;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.35));
+}
+
 /* ── Footer (bottom of every page) ────────────────────────────── */
 
 .site-footer {
@@ -672,8 +683,27 @@ canvas {
   width: 300px;
 }
 
-.project-item .competency-tags {
+.project-item .competency-tags,
+.project-summary {
   padding: 0 0.5rem;
+}
+
+.project-summary {
+  margin-top: 1.25rem;
+}
+
+.featured-label {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  font-family: "Fuzzy Bubbles", "Inter", cursive;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.project-built {
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .sticky-note {
@@ -935,7 +965,8 @@ canvas {
     min-width: 0;
   }
 
-  .project-item .competency-tags {
+  .project-item .competency-tags,
+  .project-summary {
     padding: 0;
   }
 
